@@ -5,40 +5,44 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-public class NetworkChangeReceiver extends BroadcastReceiver {
+public class NetworkChangeReceiver
+  extends BroadcastReceiver {
+  private NetworkChangeListener listener;
 
-    private NetworkChangeListener listener;
-
-    @Override
-    public void onReceive(final Context context, final Intent intent) {
-
-        int status = NetworkUtil.getConnectivityStatus(context);
-        Log.e("NetworkChangeReceiver", "The network status is " + status);
-        if ("android.net.conn.CONNECTIVITY_CHANGE".equals(intent.getAction())) {
-            if (status == NetworkUtil.NETWORK_STATUS_NOT_CONNECTED) {
-                Log.e("NetworkChangeReceiver", "Not connected");
-                if (listener != null) {
-                    listener.onDisconnected();
-                }
-            } else {
-                Log.e("NetworkChangeReceiver", "Is connected");
-                if (listener != null) {
-                    listener.onConnected();
-                }
-            }
+  @Override
+  public void onReceive(final Context context, final Intent intent) {
+    int status = NetworkUtil.getConnectivityStatus(context);
+    Log.e("NetworkChangeReceiver", "The network status is " + status);
+    if ("android.net.conn.CONNECTIVITY_CHANGE".equals(intent.getAction())) {
+      if (status == NetworkUtil.NETWORK_STATUS_NOT_CONNECTED) {
+        Log.e("NetworkChangeReceiver", "Not connected");
+        if (listener != null) {
+          listener.onDisconnected();
         }
+      } else {
+        Log.e("NetworkChangeReceiver", "Is connected");
+        if (listener != null) {
+          listener.onConnected();
+        }
+      }
     }
+  }
 
-    public void registerListener(NetworkChangeListener listener) {
-        this.listener = listener;
-    }
+  public void registerListener(NetworkChangeListener listener) {
+    this.listener = listener;
+  }
 
-    public void unregisterListener() {
-        this.listener = null;
-    }
+  public void unregisterListener() {
+    this.listener = null;
+  }
 
-    public interface NetworkChangeListener {
-        void onConnected();
-        void onDisconnected();
-    }
+  public interface NetworkChangeListener {
+
+    void onConnected();
+
+    void onDisconnected();
+
+  }
+
 }
+

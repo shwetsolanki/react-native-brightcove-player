@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ViewStyle } from 'react-native';
+import {ViewStyle} from 'react-native';
 
 type VideoToken = string;
 
@@ -22,9 +22,9 @@ export type BrightcovePlayerProps = {
   onPlay?: () => void;
   onPause?: () => void;
   onEnd?: () => void;
-  onProgress?: ({ currentTime: number, duration: number }) => void;
-  onChangeDuration?: ({ duration: number }) => void;
-  onUpdateBufferProgress?: ({ bufferProgress: number }) => void;
+  onProgress?: ({currentTime: number, duration: number}) => void;
+  onChangeDuration?: ({duration: number}) => void;
+  onUpdateBufferProgress?: ({bufferProgress: number}) => void;
   onBufferingStarted?: () => void;
   onBufferingCompleted?: () => void;
   onBeforeEnterFullscreen?: () => void;
@@ -79,40 +79,40 @@ export namespace BrightcovePlayerUtil {
     accountId: string,
     policyKey: string,
     referenceId: string,
-    bitRate?: number
+    bitRate?: number,
   ): Promise<VideoToken>;
 
   export function requestDownloadVideoWithVideoId(
     accountId: string,
     policyKey: string,
     videoId: string,
-    bitRate?: number
+    bitRate?: number,
   ): Promise<VideoToken>;
 
   export function getOfflineVideoStatuses(
     accountId: string,
-    policyKey: string
+    policyKey: string,
   ): Promise<OfflineVideoStatus[]>;
 
   export function deleteOfflineVideo(
     accountId: string,
     policyKey: string,
-    videoToken: VideoToken
+    videoToken: VideoToken,
   ): Promise<void>;
 
   export function getPlaylistWithReferenceId(
     accountId: string,
     policyKey: string,
-    referenceId: string
+    referenceId: string,
   ): Promise<PlaylistVideo[]>;
 
   export function getPlaylistWithPlaylistId(
     accountId: string,
     policyKey: string,
-    playlistId: string
+    playlistId: string,
   ): Promise<PlaylistVideo[]>;
 
   export function addOfflineNotificationListener(
-    callback: (statuses: OfflineVideoStatus[]) => void
+    callback: (statuses: OfflineVideoStatus[]) => void,
   ): Function;
 }
