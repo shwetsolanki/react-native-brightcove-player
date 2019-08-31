@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:shwetsolanki/react-native-brightcove-player.git"
+    "url": "https://github.com/shwetsolanki/react-native-brightcove-player.git"
   },
   "bugs": {
-    "url": "https://github.com/manse/react-native-brightcove-player/issues"
+    "url": "https://github.com/shwetsolanki/react-native-brightcove-player/issues"
   },
   "keywords": [
     "react-native",
